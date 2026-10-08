@@ -1,5 +1,5 @@
-const CACHE_NAME = 'esp32-hub-v1';
-const ASSETS = [
+const CACHE_NAME = 'esp32-pro-hub-v2';
+const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './style.css',
@@ -9,7 +9,7 @@ const ASSETS = [
 
 self.addEventListener('install', (e) => {
   e.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS_TO_CACHE))
   );
 });
 
@@ -18,5 +18,3 @@ self.addEventListener('fetch', (e) => {
     caches.match(e.request).then((response) => response || fetch(e.request))
   );
 });
-
-
